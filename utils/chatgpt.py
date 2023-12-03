@@ -67,25 +67,23 @@ def single_turn_chat(prompt, temperature=0, model="gpt-3.5-turbo-0301"):
     response = completion["choices"][0]["message"]["content"]
     return response
 
-
+# TODO: Estimate total cost
 def cal_chatgpt_cost(prompts, model, task):
-    pass
-    # # model: "gpt-3.5-turbo-0301", "gpt-4-0314"
-    # # task: "ed", "ar", "si", "rs", "rg"
-    # cost_dict = {
-    #     "gpt-3.5-turbo-0301": [0.0010, 0.0020],
-    #     "gpt-4-0314": [0.03, 0.06],
-    # }
-    # tokens = 0
-    # for prompt in prompts:
-    #     messages = [
-    #         {"role": "user", "content": prompt},
-    #     ]
-    #     tokens += num_tokens_from_messages(messages, model)
+    # model: "gpt-3.5-turbo-0301", "gpt-4-0314"
+    # task: "ed", "ar", "si", "rs", "rg"
+    cost_dict = {
+        "gpt-3.5-turbo-0301": [0.0010, 0.0020],
+        "gpt-4-0314": [0.03, 0.06],
+    }
+    tokens = 0
+    for prompt in prompts:
+        messages = [
+            {"role": "user", "content": prompt},
+        ]
+        tokens += num_tokens_from_messages(messages, model)
 
-    # prompt_cost = cost_dict[model][0] * tokens / 1000
+    prompt_cost = cost_dict[model][0] * tokens / 1000
     # generation_cost = cost_dict[model][1] * tokens / 1000
 
-    # print(f"Prompts cost: ${prompt_cost:.4f}.")
+    print(f"Prompts cost: ${prompt_cost:.4f}.")
     # print(f"Estimate total cost: ${prompt_cost + generation_cost:.4f}.")
-    # # print(f"Total may cost: ${0.002 * (tokens + 50 * len(prompts)) / 1000:.4f}.")

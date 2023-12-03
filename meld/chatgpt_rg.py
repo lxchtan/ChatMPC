@@ -1,7 +1,5 @@
 import logging
-import os
 import json
-import openai
 from utils.chatgpt import single_turn_chat, cal_chatgpt_cost
 from utils.prompter import Prompter
 from utils.eval import calculate_generation_metrics

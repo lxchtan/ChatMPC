@@ -1,0 +1,9 @@
+sacrebleu
+scikit-learn
+fire
+tenacity
+rouge_score
+evaluate
+nltk
+mauve-text
+openai
